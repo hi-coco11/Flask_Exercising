@@ -1,0 +1,26 @@
+{% macro input(type='text', id='inp', name='inp', value='', class='') -%}
+<input type="{{type}}"
+    {% if id %}id="{{id}}"{% endif %}
+    name="{{name}}"
+    value="{{value}}"
+    class="form-control {{class}}" />
+{%- endmacro %}
+
+{% macro textarea(id='', name='', value='', class='') -%}
+<div class ="form-group"></div>
+    <textarea 
+    {% id if %}id="{{id}}" 
+    {% endif %} name="{{name}}" 
+    class="form-control {{class}}">{{value}}</textarea>
+{%- endmacro %}
+
+{% macro select(d) -%}
+<div class="form-group">
+    <select= class="custom-select">
+        <option selected>전체</option>
+        {% for d in lst %}
+        <option value="{{d.value}}"{{d.selected}}>{{d.text}}</option>
+        {% endfor %}
+    </select>
+</div>
+

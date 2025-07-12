@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %} {{Title}} {% endblock %}
+
+{% for item in [1, 2, 3]%}
+    {% block title2 scoped %} <p> sub titititle {{item}}</p> {% endblock %}
+{% endfor %}
+
+
+{% block section %}
+<div>
+    <!-- {{ super() }} 이렇게 하면 부모클래스도 나옴 -->
+    this is scetion
+</div>
+{% endblock %}
+
+{% block outer_block %}
+    <p> 111111</p>
+    <!-- {{ super() }} 부모클래스에서 <h3> 안 먹히게 할 때-->
+    {% block inner_block %} BB {% endblock inner_blcok %}
+{% endblock outer_block %}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jinja Test Page</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="{{% url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+    <div>Jinja Test: {{title}}</div>
+
+    <hr>
+
+    <ul>
+        {% for rank, title, name, hide, ref in lst2 recursive %}
+        <li>
+            {{title}}: {{name}}
+            <ul class = "sub">{{ loop(ref) }}</ul>
+        </li>
+        {% endfor %}
+    </ul>
+    <ul>
+        {% for item in lst %}
+            <!-- <li>{{item[0]}}:{{item[1]}}</li> 이렇게 쓰이기도함 -->
+            <li>{{title}}: {{name}}</li>
+        {% endfor %}
+    </ul>
+
+
+    {{ "<strong>Strong</strong>" | escape}}
+    <hr>
+    {{ "<strong>Strong1</strong>" | safe}}
+    {{ "<strong>Strong2</strong>" | striptags}}
+
+    <hr>
+
+</body>
+</html>
